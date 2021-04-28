@@ -1,0 +1,8 @@
+Cython
+numpy
+scipy
+matplotlib
+PyOpenGL
+PyOpenGL-accelerate
+sklearn
+opencv-python
