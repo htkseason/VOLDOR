@@ -291,6 +291,27 @@ class VOLDOR_Viewer:
             self.cache_outdated = True
         elif key == 'p':
             self.use_perspective_view = not self.use_perspective_view
+        elif key == 'm':
+            print(self.cache_points.shape)
+            print(self.cache_point_colors.shape)
+            n_vertices = self.cache_points.shape[0]
+            with open('./pc.ply', 'w') as f:
+                f.writelines([
+                    'ply\n',
+                    'format ascii 1.0\n',
+                    f'element vertex {n_vertices}\n',
+                    'property float x\n',
+                    'property float y\n',
+                    'property float z\n',
+                    'property uchar red\n',
+                    'property uchar green\n',
+                    'property uchar blue\n'
+                    'element face 0\n',
+                    'end_header\n'
+                ])
+                
+                for i in range(n_vertices):
+                    f.write(f'{self.cache_points[i, 0]} {self.cache_points[i, 1]} {self.cache_points[i, 2]} {self.cache_point_colors[i,0]} {self.cache_point_colors[i,1]} {self.cache_point_colors[i,2]}\n')
         
         
 

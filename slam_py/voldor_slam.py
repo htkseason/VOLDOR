@@ -92,6 +92,10 @@ class VOLDOR_SLAM:
         # mono-scaled related config
         self.depth_scaling_max_pixels = 10000
         self.depth_scaling_conf_thresh = 0.3
+
+        # voldor related, need modify before set_cam_params()
+        self.voldor_pose_sample_min_disp = 1.0
+        self.voldor_pose_sample_max_disp = 200.0
         
         # pgo related config
         self.pgo_refine_kf_interval = 10
@@ -196,7 +200,8 @@ class VOLDOR_SLAM:
             self.basefocal = basefocal*rescale
         self.K = np.array([[fx,0,cx], [0,fy,cy], [0,0,1]], np.float32)
         self.K_inv = np.linalg.inv(self.K)
-        print(f'Camera parameters set to {fx}, {fy}, {cx}, {cy}, {basefocal}')
+        self.voldor_config += f'--pose_sample_min_depth {self.basefocal/self.voldor_pose_sample_max_disp} --pose_sample_max_depth {self.basefocal/self.voldor_pose_sample_min_disp} '
+        print(f'Camera parameters set to {self.fx}, {self.fy}, {self.cx}, {self.cy}, {self.basefocal}')
 
     def flow_loader_sync(self, fid_query, no_block=False, block_when_uninit=False):
         if (self.flow_loader_pt == -1 and not block_when_uninit) \

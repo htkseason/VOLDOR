@@ -138,6 +138,7 @@ More details can be found in the comments of the `demo` script. In [demo data](h
 ***Viewer Control Manual***  
 <pre>
 > q     ->   Exit  
+> m     ->   Save point cloud to .ply  
 > r     ->   Reset view  
 > h     ->   Hide cameras / links  
 > f     ->   Follow the current camera  
