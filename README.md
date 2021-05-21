@@ -16,7 +16,7 @@ VOLDOR-SLAM is a real-time dense-indirect SLAM system takes dense optical flows 
 > CVPR 2020 [[paper]](https://arxiv.org/abs/2104.06789) [[video]](https://www.youtube.com/watch?v=wlWjSTiyE4s)
 
 ## **Installation**
-Our system is built with cuda, cython and python, where the compute-intensive methods are written in cuda and c++, while the slam logic and i/o are written in python. We will support the compatibility under the following configurations:  
+Our system is built with cuda, cython and python. We will support the compatibility under the following configurations:  
 > Windows 10 + Visual Studio 2017  &nbsp;/&nbsp;  Ubuntu 18.04  
 > CUDA >= 9.0  
 > Python 3.6.X  
@@ -150,7 +150,9 @@ More details can be found in the comments of the `demo` script. In [demo data](h
 > Mouse drag with right down   ->   Scene translation  
 </pre>
 
-***I/O BottleNeck.*** If you observe choppy GPU load or the latest map on the viewer colored gray, it probably means the loaders cannot catch up with the VO, and your disk I/O is bottlenecking the performance. The latter will affect the performance by blocking the local mapping while VO keeps running. Consider move your data to SSD disk or you may restart the software a few times that your disk will cache more data.  
+***Viewer range.*** When running with monocular capture, if the world scale is unfortunately initialized too large, the viewer may not display many pixels, which can be adjusted using x/z keys.  
+
+***I/O BottleNeck.*** If you observe choppy GPU load or the latest map on the viewer colored gray, it probably means the disk I/O is bottlenecking the performance. This will affect the accuracy by blocking the local mapping while VO keeps running. Consider move your data to SSD disk or you may restart the software a few times that your disk will cache more data.  
 
 ***Parameter Tuning.*** Usually default parameters work for all. You may try loosing the loop closure thresholds to detect more loop closures. For very challenging dataset, if the full pipeline is not stable, try disable local mapping. For tuning VO parameters, pass parameters using `slam.voldor_user_config`. All available parameters can be found in `voldor/config.h` with descriptions. For SLAM parameters, check the `__init__` method of `VOLDOR_SLAM`.  
 
