@@ -9,7 +9,7 @@ VOLDOR-SLAM is a real-time dense-indirect SLAM system takes dense optical flows 
 ## **Related Pubulications**
 > **VOLDOR-SLAM: For the times when feature-based or direct methods are not good enough**  
 > Zhixiang Min, Enrique Dunn  
-> ICRA 2021 [[paper]](https://arxiv.org/abs/2104.06800) [[video]](https://www.youtube.com/watch?v=G3ornaZO1Mc)
+> ICRA 2021 [[paper]](https://arxiv.org/abs/2104.06800) [[video]](https://www.youtube.com/watch?v=sz8O953cXc0)
 
 > **VOLDOR: Visual Odometry from Log-logistic Dense Optical flow Residuals**  
 > Zhixiang Min, Yiding Yang, Enrique Dunn  
