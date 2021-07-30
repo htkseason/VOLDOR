@@ -150,7 +150,9 @@ More details can be found in the comments of the `demo` script. In [demo data](h
 > Mouse drag with right down   ->   Scene translation  
 </pre>
 
-***Viewer range.*** When running with monocular capture, if the world scale is unfortunately initialized too large, the viewer may not display many pixels, which can be adjusted using x/z keys.  
+***Viewer Range.*** When running with monocular capture, if the world scale is unfortunately initialized too large, the viewer may not display many pixels, which can be adjusted using x/z keys.  
+
+***Input Frame Rate.*** Our framework favors a modest baseline between frames to let the optical flows being informative. For high frame rate videos, consider downsampling the frame rate based on appearance changing. (E.g. KITTI/TartanAir @ 10Hz, TUM-RGBD @ 3Hz.)  
 
 ***I/O BottleNeck.*** If you observe choppy GPU load or the latest map on the viewer colored gray, it probably means the disk I/O is bottlenecking the performance. This will affect the accuracy by blocking the local mapping while VO keeps running. Consider move your data to SSD disk or you may restart the software a few times that your disk will cache more data.  
 
