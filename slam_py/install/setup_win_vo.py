@@ -12,7 +12,7 @@ opencv_lib_dir = 'C:/opencv/build/x64/vc15/lib'
 opencv_lib_name = 'opencv_world3414'
 
 # Change this if you target different host/device
-nvcc_machine_code = '-m64 -arch=compute_61 -code=sm_61' 
+nvcc_machine_code = '' #'-m64 -arch=compute_61 -code=sm_61'
 
 gpu_sources_cpp = ' '.join(glob('../../gpu-kernels/*.cpp'))
 gpu_sources_cu = ' '.join(glob('../../gpu-kernels/*.cu'))
