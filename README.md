@@ -83,7 +83,7 @@ Our system is built with cuda, cython and python. We will support the compatibil
 
 * **pyDBoW3 (Optional for loop closure. Prerequisite building full SLAM)**  
     1. Download and follow the instructions to build [pyDBoW3](https://github.com/htkseason/pyDBoW3).
-    2. You will get `pyDBoW3.so` when you succeeded. Copy it to the `demo` folder.
+    2. You will get `pyDBoW3.so` when you succeed. Copy it to the `demo` folder.
     3. The vocabulary file `ORBvoc.bin` already included in the `demo` folder.  
 
 * **Build VO Only:**  
@@ -158,7 +158,7 @@ More details can be found in the comments of the `demo` script. In [demo data](h
 
 ***Parameter Tuning.*** Usually default parameters work for all. You may try loosing the loop closure thresholds to detect more loop closures. For very challenging dataset, if the full pipeline is not stable, try disable local mapping. For tuning VO parameters, pass parameters using `slam.voldor_user_config`. All available parameters can be found in `voldor/config.h` with descriptions. For SLAM parameters, check the `__init__` method of `VOLDOR_SLAM`.  
 
-***What is mono-scaled mode?*** Mono-scaled mode is to use the disparity map only for correcting the scale similar to visual-inertial slam.  
+***What is mono-scaled mode?*** Mono-scaled mode is to use the disparity map only for correcting the world scale.  
 
 ## **License & Third Party Acknowledgements**
 The software is released under the attached `LICENSE` file.  
