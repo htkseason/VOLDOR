@@ -41,6 +41,9 @@ Our system is built with cuda, cython and python. We will support the compatibil
     1. Download and setup [OpenCV 3.4.X](https://opencv.org/releases/).  
     2. Copy `opencv_worldxxx.dll` from the opencv workspace to the `demo` folder.  
 
+* **PyOpenGL (Optional for viewer)**  
+    1. PyOpenGL installed from pip requires additional `dll` file to be configured in `PATH`. If you meet `OpenGL.error.NullFunctionError` while launching the viewer, try install PyOpenGL from wheels [PyOpenGL-wheels](https://www.lfd.uci.edu/~gohlke/pythonlibs/#pyopengl).  
+
 * **Ceres (Optional for mapping)**  
     1. Download and follow the instructions to build [Ceres](http://ceres-solver.org/) with [SuiteSparse](https://github.com/jlblancoc/suitesparse-metis-for-windows). (Painful)  
     2. Copy `ceres.dll`, `glog.dll`, `libblas.dll`, `libgcc_s_sjlj-1.dll`, `libgfortran-3.dll`, `liblapack.dll`, `libquadmath-0.dll` to the `demo` folder. They are all ceres dependencies. You can find them under Ceres and SuiteSparse workspace.  
