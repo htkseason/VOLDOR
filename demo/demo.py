@@ -38,7 +38,7 @@ if __name__ == '__main__':
 
     # set camera intrinsic
     slam.set_cam_params(opt.fx,opt.fy,opt.cx,opt.cy,opt.bf, rescale=opt.resize)
-    slam.voldor_user_config = f'--abs_resize_factor {opt.resize}'
+    slam.voldor_user_config = f'--abs_resize_factor {opt.abs_resize}'
 
     # enable loop closure
     if opt.enable_loop_closure is not None:
