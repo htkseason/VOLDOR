@@ -165,9 +165,10 @@ class VOLDOR_SLAM:
         self.disp_loader_pt = -1
         self.lc_candidates = []
 
-        self.fx,fy,cx,cy = 0,0,0,0
+        self.fx, self.fy, self.cx, self.cy = 0,0,0,0
         self.basefocal = 0
         self.N_FRAMES = float('nan')
+        self.w, self.h = 0,0
         
         self.fid_cur = 0
         self.fid_cur_tmpkf = -1 # temporal key frame
@@ -231,7 +232,7 @@ class VOLDOR_SLAM:
             time.sleep(0.01)
         return True
         
-    def flow_loader(self, flow_path, resize=1.0, n_pre_cache=100, range=(0,0)):
+    def flow_loader(self, flow_path, resize=1.0, n_cache=100, range=(0,0)):
         self.flow_loader_pt = 0
 
         flow_fn_list = sorted(os.listdir(flow_path))
@@ -244,7 +245,7 @@ class VOLDOR_SLAM:
         self.w = int(flow_example.shape[1]*resize)
         
         for fn in flow_fn_list:
-            while len(self.flows) - self.fid_cur > n_pre_cache:
+            while len(self.flows) - self.fid_cur > n_cache:
                 time.sleep(0.01)
 
             flow = load_flow(os.path.join(flow_path, fn))
@@ -256,7 +257,10 @@ class VOLDOR_SLAM:
             self.flows.append(flow)
             self.flow_loader_pt += 1
             
-    def image_loader(self, image_path, n_pre_cache=100, range=(0,0)):
+    def image_loader(self, image_path, n_cache=100, range=(0,0)):
+        if self.h==0 or self.w==0:
+            raise 'Need start optical flow loader first.'
+
         self.image_loader_pt = 0
 
         image_fn_list = sorted(os.listdir(image_path))
@@ -265,7 +269,7 @@ class VOLDOR_SLAM:
         print(f'{len(image_fn_list)} images loaded')
         
         for fn in image_fn_list:
-            while len(self.images_grayf) - self.fid_cur > n_pre_cache or self.flow_loader_pt <= 0:
+            while len(self.images_grayf) - self.fid_cur > n_cache or self.flow_loader_pt <= 0:
                 time.sleep(0.01)
 
             img = cv2.imread(os.path.join(image_path, fn), cv2.IMREAD_COLOR)
@@ -280,7 +284,10 @@ class VOLDOR_SLAM:
             self.images_grayf.append(img)
             self.image_loader_pt += 1
 
-    def disp_loader(self, disp_path, n_pre_cache=100, range=(0,0)):
+    def disp_loader(self, disp_path, n_cache=100, range=(0,0)):
+        if self.h==0 or self.w==0:
+            raise 'Need start optical flow loader first.'
+            
         self.disp_loader_pt = 0
 
         disp_fn_list = sorted(os.listdir(disp_path))
@@ -289,7 +296,7 @@ class VOLDOR_SLAM:
         print(f'{len(disp_fn_list)} disparities loaded')
         
         for fn in disp_fn_list:
-            while len(self.disps) - self.fid_cur > n_pre_cache or self.flow_loader_pt <= 0:
+            while len(self.disps) - self.fid_cur > n_cache or self.flow_loader_pt <= 0:
                 time.sleep(0.01)
 
             if fn.endswith('.flo'):
