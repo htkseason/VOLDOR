@@ -155,6 +155,8 @@ More details can be found in the comments of the `demo` script. In [demo data](h
 
 ***Viewer Range.*** When running with monocular capture, if the world scale is unfortunately initialized too large, the viewer may not display many pixels, which can be adjusted using x/z keys.  
 
+***How to pick basefocal.*** `basefocal` refers to `baseline (meter)` times `focal (px)`. It decides the scene scale. If the input disparity maps are from rectified stereo, the `baseline` of stereo pairs should be used. In the case of depth camera or monocular, `basefocal` can be used as a hyper-parameter tuning the confidence on the input depth. A proper `basefocal` value should let the displayed keyframe depth map (`tmpkf_depth`) shows a porper variance (neither pure white or black).  
+
 ***Input Frame Rate.*** Our framework favors a modest baseline between frames to let the optical flows being informative. For high frame rate videos, consider downsampling the frame rate based on appearance changing. (E.g. KITTI/TartanAir @ 10Hz, TUM-RGBD @ 3Hz.)  
 
 ***I/O BottleNeck.*** If you observe choppy GPU load or the latest map on the viewer colored gray, it probably means the disk I/O is bottlenecking the performance. This will affect the accuracy by blocking the local mapping while VO keeps running. Consider move your data to SSD disk or you may restart the software a few times that your disk will cache more data.  
