@@ -13,7 +13,7 @@ nvcc_machine_code = '' #'-m64 -arch=compute_61 -code=sm_61'
 gpu_sources_cpp = ' '.join(glob('../../gpu-kernels/*.cpp'))
 gpu_sources_cu = ' '.join(glob('../../gpu-kernels/*.cu'))
 
-gpu_kernel_build_cmd = f'/usr/local/cuda/bin/nvcc {gpu_sources_cpp} {gpu_sources_cu} -lib -o libgpu-kernels.so -O3 {nvcc_machine_code}'
+gpu_kernel_build_cmd = f'/usr/local/cuda/bin/nvcc --compiler-options "-shared -fPIC" {gpu_sources_cpp} {gpu_sources_cu} -lib -o libgpu-kernels.so -O3 {nvcc_machine_code}'
 os.system(gpu_kernel_build_cmd)
 
 opencv_libs = subprocess.check_output('pkg-config --libs opencv'.split())
