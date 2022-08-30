@@ -33,7 +33,7 @@ Our system is built with cuda, cython and python. We will support the compatibil
     ```
 
 ### ***Prebuilt Binaries***  
-* For windows users, we provide [prebuilt binaries](https://drive.google.com/drive/folders/1kgFeY5JQ2iWVeDrpQ-Q-qR-F1aCu_vUk?usp=sharing). Download and copy the binaries files into the `demo` folder. You may also need install [VC++ runtime library](https://support.microsoft.com/en-us/topic/the-latest-supported-visual-c-downloads-2647da03-1eea-4433-9aff-95f26a218cc0).  
+* For windows users, we provide [prebuilt binaries](https://stevens0-my.sharepoint.com/:f:/g/personal/zmin1_stevens_edu/ErEhdlXkUzJMtbzFZgsgZfwBw7KeZYI3lCJe4b5VTNvXRQ?e=TJe0eC). Download and copy the binaries files into the `demo` folder. You may also need install [VC++ runtime library](https://support.microsoft.com/en-us/topic/the-latest-supported-visual-c-downloads-2647da03-1eea-4433-9aff-95f26a218cc0).  
 
 ### ***Windows***
 
@@ -108,7 +108,7 @@ Our system is built with cuda, cython and python. We will support the compatibil
 
 
 ## **Prepare Data**
-Our method takes three inputs. You may download [demo data](https://drive.google.com/drive/folders/1kgFeY5JQ2iWVeDrpQ-Q-qR-F1aCu_vUk?usp=sharing) to run and play.  
+Our method takes three inputs. You may download [demo data](https://stevens0-my.sharepoint.com/:f:/g/personal/zmin1_stevens_edu/ErEhdlXkUzJMtbzFZgsgZfwBw7KeZYI3lCJe4b5VTNvXRQ?e=TJe0eC) to run and play.  
 > **Optical flows** are *REQUIRED* for visual odometry. We recommend [MaskFlowNet](https://github.com/microsoft/MaskFlownet) or [PWC-Net](https://github.com/sniklaus/pytorch-pwc) as the optical flow estimator.  
 Supported format: `.flo`  
 
@@ -134,7 +134,7 @@ python demo.py
 --save_poses './poses.txt' 
 --save_depths './depths' 
 ```
-More details can be found in the comments of the `demo` script. In [demo data](https://drive.google.com/drive/folders/1kgFeY5JQ2iWVeDrpQ-Q-qR-F1aCu_vUk?usp=sharing), we also provided bash commands in `run_demo.txt` under each data instance folder.  
+More details can be found in the comments of the `demo` script. In [demo data](https://stevens0-my.sharepoint.com/:f:/g/personal/zmin1_stevens_edu/ErEhdlXkUzJMtbzFZgsgZfwBw7KeZYI3lCJe4b5VTNvXRQ?e=TJe0eC), we also provided bash commands in `run_demo.txt` under each data instance folder.  
 
 
 ## **Tips**
